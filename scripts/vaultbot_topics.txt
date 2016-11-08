@@ -1,0 +1,3 @@
+/map - nav_msgs/OccupancyGrid
+/slam_out_pose - geometry_msgs/PoseStamped
+/move_base/global_costmap/obstacle_layer_footprint/footprint_stamped - geometry_msgs/PolygonStamped
