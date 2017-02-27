@@ -10,7 +10,7 @@
   <arg name="tolerance" default="0.005" />
 
   <!--Wait for the selected link to stop moving for the required amount fo time-->
-  <node name="cameraman" type="CameraMan.py" pkg="support_utilities" output="screen">
+  <node name="cameraman" type="CameraMan.py" pkg="camerabot" output="screen">
     <param name="debug" value="$(arg debug)"/>
     <param name="world_frame" value="$(arg world_frame)"/>
     <param name="base_frame" value="$(arg base_frame)"/>

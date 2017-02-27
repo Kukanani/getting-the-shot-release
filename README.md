@@ -1,6 +1,7 @@
 Miscellaneous code and files for ARSO 2017 submitted paper. Includes both viewpoint selection and a map "vectorizer" node, which uses SciPy.
 
-I believe that this code is incomplete without also using Andrew Sharps support_utilities package, which unfortunately resides in a private repository for now. Hopefully the map vectorizer and other code snippets can prove useful anyway.
+This code includes a "map vectorizer", which takes a ROS map (which is a dense array of occupancy information) and
+converts it into a vector-specified occupancy map.
 
 on the turtlebot:
 

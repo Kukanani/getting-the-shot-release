@@ -7,6 +7,7 @@ project(camerabot)
 find_package(catkin REQUIRED COMPONENTS
   rospy
   turtlebot_navigation
+  turtlebot_bringup
   nav_msgs
   geometry_msgs
 )
@@ -67,7 +68,7 @@ add_message_files(
 # Generate added messages and services with any dependencies listed here
 generate_messages(
   DEPENDENCIES
-  std_msgs geometry_msgs  # Or other packages containing msgs
+  std_msgs geometry_msgs nav_msgs  # Or other packages containing msgs
 )
 
 ################################################
@@ -102,7 +103,7 @@ generate_messages(
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES camerabot
-  CATKIN_DEPENDS rospy turtlebot_navigation turtlebot_bringup nav_msgs
+  CATKIN_DEPENDS rospy turtlebot_navigation turtlebot_bringup nav_msgs geometry_msgs
 #  DEPENDS system_lib
 )
 
