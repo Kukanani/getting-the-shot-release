@@ -18,7 +18,6 @@ def map_callback(map):
     print("map received, building contours...")
     grid = np.array(map.data)
     grid = np.resize(grid, (map.info.height, map.info.width))
-    res = map.info.resolution
     contours = measure.find_contours(grid, 0.8)
     print("done making contours!")
 
@@ -26,24 +25,23 @@ def map_callback(map):
 
     for n, contour in enumerate(contours):
         new_s = contour.copy()
-        appr_s = approximate_polygon(new_s, tolerance=3)
+        appr_s = approximate_polygon(new_s, tolerance=5)
+
+        #coords = [(c[1], c[0]) for c in contour]
+        #print(coords)
+        #poly = shapely.geometry.Polygon(coords)
+
+        #plt.plot(appr_s[:, 1], appr_s[:, 0], linewidth=1)
+        #plt.plot(contour[:, 1], contour[:, 0], linewidth=2)
 
         poly = Polygon()
-        poly.points = [Point((a[1]-map.info.height/2)*res, (a[0]-map.info.width/2)*res, 0) for a in appr_s]
+        poly.points = [Point(a[1], a[0], 0) for a in appr_s]
         if len(poly.points) > 3:
             array.polygons.append(poly)
 
-            # coords = [(c[1], c[0]) for c in contour]
-            # #print(coords)
-            # poly = shapely.geometry.Polygon(coords)
-
-            # plt.plot(appr_s[:, 1], appr_s[:, 0],linewidth=1)
-            # plt.plot(contour[:, 1], contour[:, 0], linewidth=2)
-
-    print("publishing contours!")
     pub.publish(array)
 
-    # plt.show()
+    #plt.show()
 
 def main():
     global pub

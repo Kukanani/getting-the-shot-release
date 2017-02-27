@@ -1,0 +1,46 @@
+ROBOT CAMERAMAN BRAINSTORMING
+=============================
+
+
+Motivation
+==========
+  - Get a robot to follow around a human or other robot and film it in a meaningful way
+  - Don't just keep the target in frame, but keep the useful area in frame
+
+
+Theory
+========
+  - Two parts: keeping in frame while target is moving and keeping task region in frame without being blocked by target
+  - Ignore the first task, already well solved
+  - Target can define its task volume by providing coordinates
+  - Target task volume can be inferred using optical flow, manipulator/human configuration, etc.
+
+  - Want to maximize percentage of task volume that is visible
+  - Constraints on position:
+  	- Max distance to task volume centroid?
+  	- Min distance to task volume centroid?
+  	- Obstacles in environment
+  	- Target is also an obstacle
+  	- Personal space constraint (if target human)
+  	- Max/min pixel size of task objects in frame
+
+  - How to define the world?
+  	- Obstacles
+  	- LOS
+  	- How to calculate percentage of task volume that 
+
+
+Ideas
+==============
+  - Turtlebot in Rviz with keyboard-controlled Vaultbot? In simulation, definitely
+  - Turtlebot in real life with camera and human: kinect is already on the turtlebot. Can you use the kinect data to determine human pose in ROS? Yes, but Indigo support is sketchy.
+  - *** Model predictive control to maximize with a known robot trajectory? ***
+  - Detect when task begins/ends using activity recognition? outside scope
+  - Which joints of robot to track? should be easy to specify, assuming that it's being published to joint states, tf, etc.
+
+Extensions
+==========
+  - Two robots videoing each other (ref paper)
+  - Include navigation step (track object while nagivating)
+  - Allow explicit gestures to redirect robot attention ("look at this", "come around to this side") (ref drone paper)
+  

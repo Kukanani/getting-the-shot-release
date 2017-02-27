@@ -19,10 +19,4 @@
     <param name="loop_rate" value="$(arg loop_rate)" />
     <param name="tolerance" value="$(arg tolerance)"/>
   </node>
-
-  <node name="map_whiteout" type="map_whiteout.py" pkg="camerabot" output="screen">
-  </node>
-
-  <node name="vectorizer" type="vectorizer.py" pkg="camerabot" output="screen">
-  </node>
 </launch>

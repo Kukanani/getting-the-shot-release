@@ -87,8 +87,6 @@ def visibility(T, C, O, S, phi):
     cone_min = primary_angle - phi/2
     cone_max = primary_angle + phi/2
     
-    #print(camera_position, world_points[0])
-    #print (angle_to(camera_position, world_points[0]))
     indexed_points = [(angle_to(camera_position, world_points[i]), world_points[i]) for i in range(len(world_points))  if (angle_to(camera_position, world_points[i]) < cone_max and angle_to(camera_position, world_points[i]) > cone_min)]
     sorted_points_indexed = sorted(indexed_points, key=lambda pts : pts[0])
 
@@ -154,11 +152,7 @@ def visibility(T, C, O, S, phi):
 
     end = current_milli_time()
 
-    try:
-        view_poly = Polygon(view_volume_points)
-    except:
-        print "can't create view polygon"
-        print view_volume_points
+    view_poly = Polygon(view_volume_points)
     view_lines = lines_from_poly(view_poly)
 
     if not view_poly.is_valid:
@@ -195,9 +189,9 @@ def visibility(T, C, O, S, phi):
         pl.show()
     
     if combo.is_valid:
-       return combo.area, primary_angle
+       return combo.area
     else:
-       return 0, primary_angle
+       return 0
 
 def main():
     T = (3,9)
